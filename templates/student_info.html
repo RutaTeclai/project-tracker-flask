@@ -1,11 +1,10 @@
-<!doctype html>
-<html>
-<head>
-    <title>Student Info</title>
-</head>
-<body>
+{% extends 'base.html' %} 
+
+{% block title %}Student Info {% endblock %}
+
+{% block body %}
+
   <h1>{{ first }} {{ last }}</h1>
 
   <p>GitHub Account: {{ github }}</p>
-</body>
-</html>
+{% endblock %}
