@@ -56,8 +56,13 @@ def get_project():
     project_title = request.args.get("title")
 
     title, description, max_grade = hackbright.get_project_by_title(project_title)
+    grades = hackbright.get_grades_by_title(project_title)
 
-    return render_template("project.html", title=title, description=description, max_grade=max_grade)
+    return render_template("project.html",
+    title=title,
+    description=description,
+    max_grade=max_grade,
+    grades=grades)
 
 
 if __name__ == "__main__":

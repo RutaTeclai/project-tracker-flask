@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ title }}
+
 {% endblock title %}
 
 {% block body %}
     <h2>{{ title }}</h2>
     <p>{{ description }}</p>
     <p>Max Grade: {{ max_grade }}</p>
+    <p>Student Grades:</p>
+    <ul>
+        {% for grade in grades %}
+        {% with github = grade[0] %}
+          {% with grade = grade[1] %}
+            <li>Student Github: <a href="/student?github={{ github }}">{{ github }}</a>, Grade: {{ grade }}</li>
+          {% endwith %}
+        {% endwith %}
+      {% endfor %}
+    </ul>
 {% endblock body %}
