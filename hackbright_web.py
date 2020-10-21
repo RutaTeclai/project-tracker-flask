@@ -49,6 +49,17 @@ def get_student_form():
     return render_template("student_search.html")
 
 
+@app.route("/project")
+def get_project():
+    """Get information about a project."""
+
+    project_title = request.args.get("title")
+
+    title, description, max_grade = hackbright.get_project_by_title(project_title)
+
+    return render_template("project.html", title=title, description=description, max_grade=max_grade)
+
+
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
     app.run(debug=True, host="0.0.0.0")

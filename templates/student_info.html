@@ -11,7 +11,11 @@
   <p>Projects completed:</p>
   <ul>
     {% for project in projects %}
-      <li>Project name: {{ project[0] }}, Grade: {{ project[1] }}</li>
+      {% with title = project[0] %}
+        {% with grade = project[1] %}
+          <li>Project name: <a href="/project?title={{ title }}">{{ title }}</a>, Grade: {{ grade }}</li>
+        {% endwith %}
+      {% endwith %}
     {% endfor %}
   </ul>
 {% endblock %}
